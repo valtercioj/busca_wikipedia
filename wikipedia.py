@@ -1,7 +1,6 @@
 from requests import get
 from bs4 import BeautifulSoup as bs
 import PySimpleGUI as sg
-import os
 from googlesearch import search
 
 def tela():
@@ -15,12 +14,11 @@ def tela():
 	janela = sg.Window('Dados do usuario').layout(layout)
 	while True:
 		Button, values = janela.Read()
-		# if Button == None:
-		#	quit()
+		
 		busca = values['busca']
 		
 
-		for url in search(busca+'wikipedia', stop=1):
+		for url in search(busca+'wikipedia', stop=1): # Busca feita na wikipedia usando web scraping 
 					
 			navegation = get(url)
 			page = bs(navegation.text, 'html.parser')
